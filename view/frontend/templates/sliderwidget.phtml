@@ -1,0 +1,30 @@
+<?php
+
+$collection = $this->getListImage($block->getData('slider_id')); ?>
+
+<section class="slider">
+    <div class="flexslider">
+        <ul class="slides">
+            <?php foreach ($collection as $item): ?>
+                <li><img class="hung_test" style="height: 500px;" src="<?php echo $this->getStoreUrl().$item->getLink();?>" alt="<?php echo $item->getName();?>"></li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+</section>
+
+<script>
+    require([
+        'jquery',
+        'hungbd_flex'
+    ], function($){
+        $(window).load(function(){
+            $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: false,
+                start: function(slider){
+                    $('body').removeClass('loading');
+                }
+            });
+        });
+    });
+</script>

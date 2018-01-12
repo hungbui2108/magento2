@@ -1,0 +1,28 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="editor" />
+    <body>
+        <referenceContainer name="content">
+            <block class="Hungbd\Slider\Block\Adminhtml\Slider\Edit" name="hungbd_slider_edit" />
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Hungbd\Slider\Block\Adminhtml\Slider\Edit\Tabs" name="hungbd_slider_edit_tabs">
+                <block class="Hungbd\Slider\Block\Adminhtml\Slider\Edit\Tab\Main" name="hungbd_slider_edit_tab_main" />
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">hungbd_slider_edit_tab_main</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">attachment_image</argument>
+                    <argument name="block" xsi:type="array">
+                        <item name="label" xsi:type="string">Select Image</item>
+                        <item name="title" xsi:type="string">Select Image</item>
+                        <item name="url" xsi:type="helper"
+                              helper="Hungbd\Slider\Helper\Data::getImageGridUrl"></item>
+                        <item name="class" xsi:type="string">ajax</item>
+                    </argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

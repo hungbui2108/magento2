@@ -1,0 +1,28 @@
+<?php if ($this->checkVisableCategory(1)): ?>
+<?php $collection = $this->getListImage(1); ?>
+<section class="slider">
+    <div class="flexslider">
+        <ul class="slides">
+            <?php foreach ($collection as $item): ?>
+                <li><img style="height: 500px;" src="<?php echo $this->getStoreUrl().$item->getLink();?>" alt="<?php echo $item->getName();?>"></li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+</section>
+<script>
+    require([
+        'jquery',
+        'hungbd_flex'
+    ], function($){
+        $(window).load(function(){
+            $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: false,
+                start: function(slider){
+                    $('body').removeClass('loading');
+                }
+            });
+        });
+    });
+</script>
+<?php endif; ?>

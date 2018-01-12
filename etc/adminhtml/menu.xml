@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Hungbd_Slider::hungbd" title="My Module" module="Hungbd_Slider" sortOrder="51" resource="Magento_Backend::content"/>
+        <add id="Hungbd::slider"
+             title="Manage Slider"
+             module="Hungbd_Slider"
+             sortOrder="10" action="slider/slider"
+             resource="Magento_Backend::content"
+             parent="Hungbd_Slider::hungbd"/>
+        <add id="Hungbd::image"
+             title="Manage Image"
+             module="Hungbd_Slider"
+             sortOrder="12"
+             action="slider/image"
+             resource="Magento_Backend::content"
+             parent="Hungbd_Slider::hungbd"/>
+    </menu>
+</config>

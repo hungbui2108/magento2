@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="Hungbd\Slider\Block\Widget\SliderWidget" id="hungbd_slider_widget">
+        <label>Slider Widget</label>
+        <description></description>
+        <parameters>
+            <parameter name="slider_id" xsi:type="select" visible="true"
+                       source_model="Hungbd\Slider\Model\Source\SliderWidgetValues">
+                <label translate="true">Slider Id</label>
+            </parameter>
+        </parameters>
+
+    </widget>
+</widgets>
