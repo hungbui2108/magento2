@@ -137,19 +137,12 @@ class ImageGrid extends Extended
             [
                 'header'           => __('image ID'),
                 'type'             => 'number',
+                'name'             => 'id',
                 'index'            => 'id',
                 'header_css_class' => 'col-id',
                 'column_css_class' => 'col-id',
             ]
         );
-//        $this->addColumn(
-//            'thumbnail',
-//            [
-//                'header' => __('Thumbnail'),
-//                'index'  => 'thumbnail',
-//                'renderer'  => '\Hungbd\Slider\Block\Adminhtml\Slider\Helper\Image',
-//            ]
-//        );
         $this->addColumn(
             'name',
             [

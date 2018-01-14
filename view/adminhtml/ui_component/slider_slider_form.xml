@@ -65,16 +65,16 @@
                 </item>
             </argument>
         </field>
-        <field name="image">
-            <argument name="data" xsi:type="array">
-                <item name="options" xsi:type="object">Hungbd\Slider\Model\Source\Myvalues</item>
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" translate="true" xsi:type="string">Image</item>
-                    <item name="formElement" xsi:type="string">multiselect</item>
-                </item>
-            </argument>
-        </field>
+        <!--<field name="image">-->
+            <!--<argument name="data" xsi:type="array">-->
+                <!--<item name="options" xsi:type="object">Hungbd\Slider\Model\Source\Myvalues</item>-->
+                <!--<item name="config" xsi:type="array">-->
+                    <!--<item name="dataType" xsi:type="string">text</item>-->
+                    <!--<item name="label" translate="true" xsi:type="string">Image</item>-->
+                    <!--<item name="formElement" xsi:type="string">multiselect</item>-->
+                <!--</item>-->
+            <!--</argument>-->
+        <!--</field>-->
         <field name="category">
             <argument name="data" xsi:type="array">
                 <item name="options" xsi:type="object">Magento\Catalog\Ui\Component\Product\Form\Categories\Options
@@ -128,7 +128,7 @@
     <fieldset name="Image">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
-                <item name="label" xsi:type="string" translate="true">Products in Category</item>
+                <item name="label" xsi:type="string" translate="true">Image</item>
                 <item name="collapsible" xsi:type="boolean">true</item>
                 <item name="sortOrder" xsi:type="number">40</item>
             </item>
