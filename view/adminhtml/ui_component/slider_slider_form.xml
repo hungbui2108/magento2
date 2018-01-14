@@ -103,45 +103,49 @@
         </field>
 
     </fieldset>
-    <fieldset name="image_grid">
-        <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-                <item name="label" xsi:type="string" translate="true">Image</item>
-                <item name="collapsible" xsi:type="boolean">true</item>
-                <item name="sortOrder" xsi:type="number">30</item>
-            </item>
-        </argument>
-        <field name="listimage">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="componentType" xsi:type="string">field</item>
-                    <item name="component" xsi:type="string">Magento_Ui/js/form/components/insert-listing</item>
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" translate="true" xsi:type="string">Image</item>
-                    <item name="autoRender" xsi:type="boolean">true</item>
-                    <item name="ns" xsi:type="string">form_image_grid</item>
-                    <item name="formElement" xsi:type="string">insertListing</item>
-                </item>
-            </argument>
-        </field>
-    </fieldset>
-    <!--<fieldset name="assign_products">-->
+    <!--<fieldset name="image_grid">-->
         <!--<argument name="data" xsi:type="array">-->
             <!--<item name="config" xsi:type="array">-->
-                <!--<item name="label" xsi:type="string" translate="true">Products in Category</item>-->
+                <!--<item name="label" xsi:type="string" translate="true">Image</item>-->
                 <!--<item name="collapsible" xsi:type="boolean">true</item>-->
-                <!--<item name="sortOrder" xsi:type="number">40</item>-->
+                <!--<item name="sortOrder" xsi:type="number">30</item>-->
             <!--</item>-->
         <!--</argument>-->
-        <!--<container name="assign_products_container" >-->
+        <!--<field name="listimage">-->
             <!--<argument name="data" xsi:type="array">-->
                 <!--<item name="config" xsi:type="array">-->
-                    <!--<item name="sortOrder" xsi:type="number">160</item>-->
+                    <!--<item name="componentType" xsi:type="string">field</item>-->
+                    <!--<item name="component" xsi:type="string">Magento_Ui/js/form/components/insert-listing</item>-->
+                    <!--<item name="dataType" xsi:type="string">text</item>-->
+                    <!--<item name="label" translate="true" xsi:type="string">Image</item>-->
+                    <!--<item name="autoRender" xsi:type="boolean">true</item>-->
+                    <!--<item name="ns" xsi:type="string">form_image_grid</item>-->
+                    <!--<item name="formElement" xsi:type="string">insertListing</item>-->
                 <!--</item>-->
             <!--</argument>-->
-            <!--<htmlContent name="html_content">-->
-                <!--<argument name="block" xsi:type="object">Hungbd\Slider\Block\Adminhtml\Slider\Edit\Tab\ImageGrid</argument>-->
-            <!--</htmlContent>-->
-        <!--</container>-->
+        <!--</field>-->
     <!--</fieldset>-->
+    <fieldset name="Image">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Products in Category</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">40</item>
+            </item>
+        </argument>
+            <htmlContent name="html_content">
+                <block class="Hungbd\Slider\Block\Adminhtml\Slider\Edit\Tabs" name="hungbd_slider_edit_tabs">
+                    <action method="addTab">
+                        <argument name="name" xsi:type="string">image</argument>
+                        <argument name="block" xsi:type="array">
+                            <item name="label" xsi:type="string">Select Image</item>
+                            <item name="title" xsi:type="string">Select Image</item>
+                            <item name="url" xsi:type="helper"
+                                  helper="Hungbd\Slider\Helper\Data::getImageGridUrl"></item>
+                            <item name="class" xsi:type="string">ajax</item>
+                        </argument>
+                    </action>
+                </block>
+            </htmlContent>
+    </fieldset>
 </form>
