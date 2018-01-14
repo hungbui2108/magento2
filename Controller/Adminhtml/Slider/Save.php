@@ -39,6 +39,7 @@ class Save extends \Magento\Backend\App\Action
             $image = $this->getRequest()->getParam('image');
             $id = $this->getRequest()->getParam('id');
             $imageCollection = $Listmodel->getCollection()->addFilter('slider_id',$id);
+            $listImage = [];
             foreach ($imageCollection as $item){
                 $listImage[] = $item->getImage_id();
                 if (!in_array($item->getImage_id(),$image)){
@@ -58,13 +59,13 @@ class Save extends \Magento\Backend\App\Action
             if ($id) {
                 $model->load($id);
             }
-
             $model->setName($this->getRequest()->getParam('name'))->setCategory_id($listCate);
             try {
                 $model->save();
                 if (!empty($newImage)){
                     foreach ($newImage as $item){
-                        $Listmodel->setSlider_id($id)->setImage_id($item)->save();
+                        $Listmodel->setSlider_id($model->getId())->setImage_id($item)->save();
+                        $Listmodel->unsetData();
                     }
                 }
                 $this->messageManager->addSuccess(__('You saved this Slider.'));
