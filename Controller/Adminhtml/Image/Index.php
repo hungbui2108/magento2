@@ -1,4 +1,5 @@
 <?php
+
 namespace Hungbd\Slider\Controller\Adminhtml\Image;
 
 use Magento\Backend\App\Action\Context;

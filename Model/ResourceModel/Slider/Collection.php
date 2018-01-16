@@ -1,4 +1,5 @@
 <?php
+
 namespace Hungbd\Slider\Model\ResourceModel\Slider;
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection

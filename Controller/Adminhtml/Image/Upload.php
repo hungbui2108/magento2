@@ -1,14 +1,35 @@
 <?php
+
 namespace Hungbd\Slider\Controller\Adminhtml\Image;
+
 use Magento\Framework\Controller\ResultFactory;
-class Upload extends \Magento\Backend\App\Action {
+
+class Upload extends \Magento\Backend\App\Action
+{
+    /**
+     * @var \Magento\MediaStorage\Model\File\UploaderFactory
+     */
     protected $imageUploader;
 
+    /**
+     * @var \Magento\Framework\Filesystem\Directory\WriteInterface
+     */
     protected $_fileSystem;
 
+    /**
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
     protected $_storeManager;
 
 
+    /**
+     * Upload constructor.
+     * @param \Magento\Backend\App\Action\Context $context
+     * @param \Magento\MediaStorage\Model\File\UploaderFactory $fileUploaderFactory
+     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+     * @param \Magento\Framework\Filesystem $filesystem
+     * @throws \Magento\Framework\Exception\FileSystemException
+     */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\MediaStorage\Model\File\UploaderFactory $fileUploaderFactory,
@@ -21,6 +42,9 @@ class Upload extends \Magento\Backend\App\Action {
         $this->_fileSystem = $filesystem->getDirectoryWrite(\Magento\Framework\App\Filesystem\DirectoryList::MEDIA);
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
+     */
     public function execute()
     {
         try {
@@ -31,9 +55,9 @@ class Upload extends \Magento\Backend\App\Action {
             $uploader->setAllowRenameFiles(true);
             $uploader->setFilesDispersion(true);
             $path = $this->_fileSystem->getAbsolutePath('hungbd_slider/image');
-            $result = $uploader->save($path,$_FILES['upload']['name']);
-            $result['db_file'] = $this->_fileSystem->getRelativePath('hungbd_slider/image').$uploader->getUploadedFileName();
-            $result['url'] = $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA).$this->_fileSystem->getRelativePath('hungbd_slider/image').$uploader->getUploadedFileName();
+            $result = $uploader->save($path, $_FILES['upload']['name']);
+            $result['db_file'] = $this->_fileSystem->getRelativePath('hungbd_slider/image') . $uploader->getUploadedFileName();
+            $result['url'] = $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . $this->_fileSystem->getRelativePath('hungbd_slider/image') . $uploader->getUploadedFileName();
         } catch (\Exception $e) {
             $result = ['error' => $e->getMessage(), 'errorcode' => $e->getCode()];
         }

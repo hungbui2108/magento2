@@ -24,6 +24,9 @@ class Delete extends \Magento\Backend\App\Action
      */
     protected $resultPageFactory;
 
+    /**
+     * @var \Hungbd\Slider\Model\Image
+     */
     protected $_image;
 
     /**
@@ -35,8 +38,7 @@ class Delete extends \Magento\Backend\App\Action
         Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
         \Hungbd\Slider\Model\Image $image
-    )
-    {
+    ) {
         $this->_image = $image;
         $this->resultPageFactory = $resultPageFactory;
         parent::__construct($context);

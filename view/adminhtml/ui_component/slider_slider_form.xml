@@ -136,7 +136,7 @@
             <htmlContent name="html_content">
                 <block class="Hungbd\Slider\Block\Adminhtml\Slider\Edit\Tabs" name="hungbd_slider_edit_tabs">
                     <action method="addTab">
-                        <argument name="name" xsi:type="string">image</argument>
+                        <argument name="name" xsi:type="string">images</argument>
                         <argument name="block" xsi:type="array">
                             <item name="label" xsi:type="string">Select Image</item>
                             <item name="title" xsi:type="string">Select Image</item>

@@ -1,5 +1,7 @@
 <?php
+
 namespace Hungbd\Slider\Model;
+
 class Slider extends \Magento\Framework\Model\AbstractModel implements \Magento\Framework\DataObject\IdentityInterface
 {
     const CACHE_TAG = 'hungbd_slider_slider';

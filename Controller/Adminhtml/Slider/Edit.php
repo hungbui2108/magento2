@@ -5,6 +5,7 @@
  * Date: 03/01/2018
  * Time: 09:53
  */
+
 namespace Hungbd\Slider\Controller\Adminhtml\Slider;
 
 use Magento\Backend\App\Action;
@@ -23,13 +24,23 @@ class Edit extends \Magento\Backend\App\Action
      */
     protected $resultPageFactory;
 
+    /**
+     * @var \Hungbd\Slider\Model\Slider
+     */
     protected $_slider;
 
-    protected $_sliderImage;
     /**
+     * @var \Hungbd\Slider\Model\SliderImage
+     */
+    protected $_sliderImage;
+
+    /**
+     * Edit constructor.
      * @param Action\Context $context
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
      * @param \Magento\Framework\Registry $registry
+     * @param \Hungbd\Slider\Model\Slider $slider
+     * @param \Hungbd\Slider\Model\SliderImage $sliderImage
      */
     public function __construct(
         Action\Context $context,

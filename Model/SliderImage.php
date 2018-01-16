@@ -5,7 +5,9 @@
  * Date: 28/12/2017
  * Time: 11:19
  */
+
 namespace Hungbd\Slider\Model;
+
 class SliderImage extends \Magento\Framework\Model\AbstractModel implements \Magento\Framework\DataObject\IdentityInterface
 {
     const CACHE_TAG = 'hungbd_slider_sliderimage';

@@ -1,26 +1,44 @@
 <?php
+
 namespace Hungbd\Slider\Controller\Adminhtml\Slider;
 
 use Magento\Backend\App\Action;
 use Hungbd\Slider\Model\Slider;
 use Hungbd\Slider\Model\SliderImage;
+use Magento\Backend\Helper\Js;
 
 class Save extends \Magento\Backend\App\Action
 {
-
-    protected $_slider;
-    protected $_list;
-    protected $_fileUploaderFactory;
-    protected $_fileSystem;
     /**
-     * @param Action\Context $context
+     * @var Slider
      */
-    public function __construct(Action\Context $context,Slider $slider,SliderImage $list)
+    protected $_slider;
+
+    /**
+     * @var SliderImage
+     */
+    protected $_list;
+
+    /**
+     * @var Js
+     */
+    protected $_jsHelper;
+
+    /**
+     * Save constructor.
+     * @param Action\Context $context
+     * @param Slider $slider
+     * @param SliderImage $list
+     * @param Js $jsHelper
+     */
+    public function __construct(Action\Context $context, Slider $slider, SliderImage $list, Js $jsHelper)
     {
         $this->_list = $list;
         $this->_slider = $slider;
+        $this->_jsHelper = $jsHelper;
         parent::__construct($context);
     }
+
     /**
      * Save action
      *
@@ -29,7 +47,6 @@ class Save extends \Magento\Backend\App\Action
     public function execute()
     {
         $data = $this->getRequest()->getPostValue();
-        var_dump($data);die;
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($data) {
@@ -37,34 +54,34 @@ class Save extends \Magento\Backend\App\Action
             $model = $this->_slider;
             $Listmodel = $this->_list;
             $category = $this->getRequest()->getParam('category');
-            $image = $this->getRequest()->getParam('image');
+            $image = $this->_jsHelper->decodeGridSerializedInput($this->getRequest()->getParam('images'));
             $id = $this->getRequest()->getParam('id');
-            $imageCollection = $Listmodel->getCollection()->addFilter('slider_id',$id);
+            $imageCollection = $Listmodel->getCollection()->addFilter('slider_id', $id);
             $listImage = [];
-            foreach ($imageCollection as $item){
+            foreach ($imageCollection as $item) {
                 $listImage[] = $item->getImage_id();
-                if (!in_array($item->getImage_id(),$image)){
+                if (!in_array($item->getImage_id(), $image)) {
                     $item->delete();
                 }
             }
-            foreach ($image as $item){
-                if (!in_array($item,$listImage)){
+            foreach ($image as $item) {
+                if (!in_array($item, $listImage)) {
                     $newImage[] = $item;
                 }
             }
             $listCate = '';
-            foreach ($category as $item){
-                $listCate = $listCate.$item.',';
+            foreach ($category as $item) {
+                $listCate = $listCate . $item . ',';
             }
-            $listCate = rtrim($listCate,',');
+            $listCate = rtrim($listCate, ',');
             if ($id) {
                 $model->load($id);
             }
             $model->setName($this->getRequest()->getParam('name'))->setCategory_id($listCate);
             try {
                 $model->save();
-                if (!empty($newImage)){
-                    foreach ($newImage as $item){
+                if (!empty($newImage)) {
+                    foreach ($newImage as $item) {
                         $Listmodel->setSlider_id($model->getId())->setImage_id($item)->save();
                         $Listmodel->unsetData();
                     }

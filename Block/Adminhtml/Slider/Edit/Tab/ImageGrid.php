@@ -128,6 +128,7 @@ class ImageGrid extends Extended
                 'name'             => 'in_image',
                 'align'            => 'center',
                 'index'            => 'id',
+                'data-form-part' => 'slider_slider_form',
                 'values'           => $this->_getSelectedImages(),
             ]
         );

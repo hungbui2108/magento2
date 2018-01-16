@@ -1,4 +1,5 @@
 <?php
+
 namespace Hungbd\Slider\Controller\Adminhtml\Image;
 
 class NewAction extends \Magento\Backend\App\Action

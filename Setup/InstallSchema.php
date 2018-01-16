@@ -12,7 +12,7 @@ use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
 
-class InstallSchema implements  InstallSchemaInterface
+class InstallSchema implements InstallSchemaInterface
 {
     /**
      * Installs DB schema for a module
@@ -36,7 +36,7 @@ class InstallSchema implements  InstallSchemaInterface
                 [
                     'identity' => true,
                     'nullable' => false,
-                    'primary'  => true,
+                    'primary' => true,
                     'unsigned' => true,
                 ],
                 'Slider ID'
@@ -47,6 +47,14 @@ class InstallSchema implements  InstallSchemaInterface
                     255,
                     ['nullable' => false,],
                     'Slider Name'
+                )
+                ->setComment('Slider Table')
+                ->addColumn(
+                    'category_id',
+                    Table::TYPE_TEXT,
+                    255,
+                    ['nullable' => false,],
+                    'Category id'
                 )
                 ->setComment('Slider Table');
 
@@ -63,7 +71,7 @@ class InstallSchema implements  InstallSchemaInterface
                 [
                     'identity' => true,
                     'nullable' => false,
-                    'primary'  => true,
+                    'primary' => true,
                     'unsigned' => true,
                 ],
                 'Slider ID'
@@ -97,7 +105,7 @@ class InstallSchema implements  InstallSchemaInterface
                 [
                     'identity' => true,
                     'nullable' => false,
-                    'primary'  => true,
+                    'primary' => true,
                     'unsigned' => true,
                 ],
                 'ID'

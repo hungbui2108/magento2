@@ -5,6 +5,7 @@
  * Date: 28/12/2017
  * Time: 13:52
  */
+
 namespace Hungbd\Slider\Model\ResourceModel\SliderImage;
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection

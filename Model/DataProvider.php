@@ -21,8 +21,7 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         StoreManagerInterface $storeManager,
         array $meta = [],
         array $data = []
-    )
-    {
+    ) {
         $this->_storeManager = $storeManager;
         $this->collection = $image->getCollection();
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);

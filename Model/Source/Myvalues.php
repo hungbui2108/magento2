@@ -17,7 +17,7 @@ class Myvalues implements \Magento\Framework\Option\ArrayInterface
     {
         $collection = $this->_image->getCollection();
         $data = array();
-        foreach ($collection as $key => $item){
+        foreach ($collection as $key => $item) {
             $data[$key]['value'] = $item['id'];
             $data[$key]['label'] = $item['name'];
         }

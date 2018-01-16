@@ -5,6 +5,7 @@
  * Date: 03/01/2018
  * Time: 09:53
  */
+
 namespace Hungbd\Slider\Controller\Adminhtml\Image;
 
 use Magento\Backend\App\Action;
@@ -23,6 +24,9 @@ class Edit extends \Magento\Backend\App\Action
      */
     protected $resultPageFactory;
 
+    /**
+     * @var \Hungbd\Slider\Model\Image
+     */
     protected $_image;
 
     /**

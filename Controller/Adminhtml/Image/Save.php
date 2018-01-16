@@ -1,4 +1,5 @@
 <?php
+
 namespace Hungbd\Slider\Controller\Adminhtml\Image;
 
 use Magento\Backend\App\Action;
@@ -9,21 +10,50 @@ use Magento\Store\Model\StoreManagerInterface;
 
 class Save extends \Magento\Backend\App\Action
 {
-
-    protected $_image;
-    protected $_fileUploaderFactory;
-    protected $_fileSystem;
-    protected $_storeManager;
     /**
-     * @param Action\Context $context
+     * @var Image
      */
-    public function __construct(Action\Context $context,Image $image,UploaderFactory $fileUploader,Filesystem $fileSystem, StoreManagerInterface  $storeManager)
-    {
+    protected $_image;
+
+    /**
+     * @var UploaderFactory
+     */
+
+    protected $_fileUploaderFactory;
+    /**
+     * @var Filesystem\Directory\WriteInterface
+     */
+
+    protected $_fileSystem;
+    /**
+     * @var StoreManagerInterface
+     */
+
+    protected $_storeManager;
+
+
+    /**
+     * Save constructor.
+     * @param Action\Context $context
+     * @param Image $image
+     * @param UploaderFactory $fileUploader
+     * @param Filesystem $fileSystem
+     * @param StoreManagerInterface $storeManager
+     * @throws \Magento\Framework\Exception\FileSystemException
+     */
+    public function __construct(
+        Action\Context $context,
+        Image $image,
+        UploaderFactory $fileUploader,
+        Filesystem $fileSystem,
+        StoreManagerInterface $storeManager
+    ) {
         $this->_fileUploaderFactory = $fileUploader;
         $this->_image = $image;
         $this->_fileSystem = $fileSystem->getDirectoryWrite(\Magento\Framework\App\Filesystem\DirectoryList::MEDIA);
         parent::__construct($context);
     }
+
     /**
      * Save action
      *
@@ -43,7 +73,7 @@ class Save extends \Magento\Backend\App\Action
             if ($id) {
                 $model->load($id);
             }
-            if (!empty($uploadInfo[0]['db_file'])){
+            if (!empty($uploadInfo[0]['db_file'])) {
                 $model->setLink($uploadInfo[0]['db_file']);
             }
             $model->setName($this->getRequest()->getParam('name'));

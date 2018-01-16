@@ -1,4 +1,5 @@
 <?php
+
 namespace Hungbd\Slider\Controller\Adminhtml\Image;
 
 use Magento\Backend\App\Action\Context;
@@ -9,7 +10,7 @@ use Magento\Framework\Controller\ResultFactory;
 /**
  * Class MassDisable
  */
-class MassDelete  extends \Magento\Backend\App\Action
+class MassDelete extends \Magento\Backend\App\Action
 {
     /**
      * @var Filter
@@ -20,17 +21,19 @@ class MassDelete  extends \Magento\Backend\App\Action
      * @var CollectionFactory
      */
     protected $_image;
+
     /**
      * @param Context $context
      * @param Filter $filter
      * @param CollectionFactory $collectionFactory
      */
-    public function __construct(Context $context, Filter $filter,Image $image)
+    public function __construct(Context $context, Filter $filter, Image $image)
     {
         $this->_image = $image;
         $this->filter = $filter;
         parent::__construct($context);
     }
+
     /**
      * Execute action
      *
